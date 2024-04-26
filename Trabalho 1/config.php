@@ -1,18 +1,16 @@
 <?php
-
-// Sample file: Never send your credentials to git
-
-// host
-$host = 'http://localhost/conteudos/crud-php-mysql-procedural/';
-
-// db
-$db_name = 'crud';
-$db_host = 'localhost';
-$db_user = 'root';
-$db_pass = '';
-
-try {
-  $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-} catch (\Throwable $th) {
-  throw $th;
+/* Database credentials. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+define('DB_SERVER', 'db.company.com');
+define('DB_USERNAME', 'phpcrud');
+define('DB_PASSWORD', 'gabriel12');
+define('DB_NAME', 'company');
+ 
+/* Attempt to connect to MySQL database */
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
+?>
