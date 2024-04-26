@@ -3,8 +3,8 @@
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $address = $salary = "";
-$name_err = $address_err = $salary_err = "";
+$name = $description = $quantity = $price = "";
+$name_err = $description_err = $quantity_err = $price_err = "";
  
 // Processing form data when form is submitted
 if(isset($_POST["id"]) && !empty($_POST["id"])){
@@ -21,37 +21,48 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $name = $input_name;
     }
     
-    // Validate address address
-    $input_address = trim($_POST["address"]);
-    if(empty($input_address)){
-        $address_err = "Please enter an address.";     
+    // Validate description
+    $input_description = trim($_POST["description"]);
+    if(empty($input_description)){
+        $description_err = "Please enter an description.";     
     } else{
-        $address = $input_address;
+        $description = $input_description;
     }
     
-    // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if(empty($input_salary)){
-        $salary_err = "Please enter the salary amount.";     
-    } elseif(!ctype_digit($input_salary)){
-        $salary_err = "Please enter a positive integer value.";
+    // Validate quantity
+    $input_quantity = trim($_POST["quantity"]);
+    if(empty($input_quantity)){
+        $quantity_err = "Please enter the quantity amount.";     
+    } elseif(!ctype_digit($input_quantity)){
+        $quantity_err = "Please enter a positive integer value.";
     } else{
-        $salary = $input_salary;
+        $quantity = $input_quantity;
+    }
+
+    // Validate price
+    $input_price = trim($_POST["price"]);
+    if(empty($input_price)){
+        $price_err = "Please enter the price amount.";     
+    } elseif(!ctype_digit($input_price)){
+        $price_err = "Please enter a positive integer value.";
+    } else{
+        $price = $input_price;
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($address_err) && empty($salary_err)){
+    if(empty($name_err) && empty($description_err) && empty($quantity_err) && empty($price_err)){
         // Prepare an update statement
-        $sql = "UPDATE employees SET name=?, address=?, salary=? WHERE id=?";
+        $sql = "UPDATE products SET name=?, description=?, quantity=?, price=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_address, $param_salary, $param_id);
+            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_description, $param_quantity, $param_price, $param_id);
             
             // Set parameters
             $param_name = $name;
-            $param_address = $address;
-            $param_salary = $salary;
+            $param_description = $description;
+            $param_quantity = $quantity;
+            $param_price = $price;
             $param_id = $id;
             
             // Attempt to execute the prepared statement
@@ -77,7 +88,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $id =  trim($_GET["id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM employees WHERE id = ?";
+        $sql = "SELECT * FROM products WHERE id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "i", $param_id);
@@ -96,8 +107,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     
                     // Retrieve individual field value
                     $name = $row["name"];
-                    $address = $row["address"];
-                    $salary = $row["salary"];
+                    $description = $row["description"];
+                    $quantity = $row["quantity"];
+                    $price = $row["price"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
@@ -140,8 +152,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <img src="./linke-company-logo.png" alt="Logo">
                     <h2 class="mt-5">Update Record</h2>
-                    <p>Please edit the input values and submit to update the employee record.</p>
+                    <p>Please edit the input values and submit to update the product record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
                         <div class="form-group">
                             <label>Name</label>
@@ -149,14 +162,19 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="invalid-feedback"><?php echo $name_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea name="address" class="form-control <?php echo (!empty($address_err)) ? 'is-invalid' : ''; ?>"><?php echo $address; ?></textarea>
-                            <span class="invalid-feedback"><?php echo $address_err;?></span>
+                            <label>Description</label>
+                            <textarea name="description" class="form-control <?php echo (!empty($description_err)) ? 'is-invalid' : ''; ?>"><?php echo $description; ?></textarea>
+                            <span class="invalid-feedback"><?php echo $description_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Salary</label>
-                            <input type="text" name="salary" class="form-control <?php echo (!empty($salary_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $salary; ?>">
-                            <span class="invalid-feedback"><?php echo $salary_err;?></span>
+                            <label>Quantity</label>
+                            <input type="text" name="quantity" class="form-control <?php echo (!empty($quantity_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $quantity; ?>">
+                            <span class="invalid-feedback"><?php echo $quantity_err;?></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" name="price" class="form-control <?php echo (!empty($price_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $price; ?>">
+                            <span class="invalid-feedback"><?php echo $price_err;?></span>
                         </div>
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">

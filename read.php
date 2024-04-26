@@ -5,7 +5,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     require_once "config.php";
     
     // Prepare a select statement
-    $sql = "SELECT * FROM employees WHERE id = ?";
+    $sql = "SELECT * FROM products WHERE id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -25,8 +25,9 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 
                 // Retrieve individual field value
                 $name = $row["name"];
-                $address = $row["address"];
-                $salary = $row["salary"];
+                $description = $row["description"];
+                $quantity = $row["quantity"];
+                $price = $row["price"];
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
                 header("location: error.php");
@@ -68,18 +69,23 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <img src="./linke-company-logo.png" alt="Logo">
                     <h1 class="mt-5 mb-3">View Record</h1>
                     <div class="form-group">
                         <label>Name</label>
                         <p><b><?php echo $row["name"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <p><b><?php echo $row["address"]; ?></b></p>
+                        <label>Description</label>
+                        <p><b><?php echo $row["description"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Salary</label>
-                        <p><b><?php echo $row["salary"]; ?></b></p>
+                        <label>Quantity</label>
+                        <p><b><?php echo $row["quantity"]; ?></b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <p><b><?php echo $row["price"]; ?></b></p>
                     </div>
                     <p><a href="index.php" class="btn btn-primary">Back</a></p>
                 </div>
