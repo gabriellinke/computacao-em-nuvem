@@ -91,6 +91,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             width: 600px;
             margin: 0 auto;
         }
+        .logo-wrapper{ 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
@@ -98,7 +104,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="./linke-company-logo.png" alt="Logo">
+                    <div class="logo-wrapper">
+                        <img width="350px" src="./linke-company-logo.png" alt="Logo">
+                    </div>
                     <h2 class="mt-5">Create Record</h2>
                     <p>Please fill this form and submit to add product record to the database.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

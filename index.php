@@ -13,9 +13,11 @@
             width: 600px;
             margin: 0 auto;
         }
-        .logo {
-            width: 300px;
-            margin: 0 auto;
+        .logo-wrapper{ 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
         }
         table tr td:last-child{
             width: 120px;
@@ -33,7 +35,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
-                        <img class="logo" src="./linke-company-logo.png" alt="Logo">
+                        <div class="logo-wrapper">
+                            <img width="350px" src="./linke-company-logo.png" alt="Logo">
+                        </div>
                         <h2 class="pull-left">Products Details</h2>
                         <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Product</a>
                     </div>

@@ -62,6 +62,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             width: 600px;
             margin: 0 auto;
         }
+        .logo-wrapper{ 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +75,9 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="./linke-company-logo.png" alt="Logo">
+                    <div class="logo-wrapper">
+                        <img width="350px" src="./linke-company-logo.png" alt="Logo">
+                    </div>
                     <h1 class="mt-5 mb-3">View Record</h1>
                     <div class="form-group">
                         <label>Name</label>

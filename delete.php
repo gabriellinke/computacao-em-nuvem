@@ -50,6 +50,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             width: 600px;
             margin: 0 auto;
         }
+        .logo-wrapper{ 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
@@ -57,7 +63,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="./linke-company-logo.png" alt="Logo">
+                    <div class="logo-wrapper">
+                        <img width="350px" src="./linke-company-logo.png" alt="Logo">
+                    </div>
                     <h2 class="mt-5 mb-3">Delete Record</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">

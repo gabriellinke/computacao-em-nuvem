@@ -145,6 +145,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             width: 600px;
             margin: 0 auto;
         }
+        .logo-wrapper{ 
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
@@ -152,7 +158,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="./linke-company-logo.png" alt="Logo">
+                    <div class="logo-wrapper">
+                        <img width="350px" src="./linke-company-logo.png" alt="Logo">
+                    </div>
                     <h2 class="mt-5">Update Record</h2>
                     <p>Please edit the input values and submit to update the product record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
