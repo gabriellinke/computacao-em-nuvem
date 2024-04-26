@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($name_err) && empty($description_err) && empty($quantity_err) && empty($price_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO employees (name, description, quantity, price) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO products (name, description, quantity, price) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
