@@ -56,7 +56,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_description, $param_quantity, $param_price, $param_id);
+            mysqli_stmt_bind_param($stmt, "ssssi", $param_name, $param_description, $param_quantity, $param_price, $param_id);
             
             // Set parameters
             $param_name = $name;
