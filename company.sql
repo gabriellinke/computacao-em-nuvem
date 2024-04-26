@@ -3,6 +3,6 @@ CREATE TABLE products (
     name VARCHAR(100) NOT NULL,
     description VARCHAR(255) NOT NULL,
     quantity INT(10) NOT NULL,
-    price INT(10) NOT NULL,
+    price INT(10) NOT NULL
 );
 
