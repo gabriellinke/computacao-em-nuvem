@@ -1,1 +1,1 @@
-# Hello World
+# Index from the docs folder
