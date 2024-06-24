@@ -1,4 +1,4 @@
-Second file - Usage file from source folder
+How to use it
 =====
 
 .. _installation:
