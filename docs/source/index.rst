@@ -1,6 +1,10 @@
-INDEX
-===================================
+.. include:: ../README.rst
 
-Testing the **markdown** for my cloud computing project. Index from the source folder
+Contents
+--------
 
-[Check the usage](./usage.rst)
+.. toctree::
+
+   Home <self>
+   usage
+   test
