@@ -1,12 +1,12 @@
 .. include:: ../../README.rst
 
-
-
 Conteúdos
 --------
 
 .. toctree::
 
-   Home <self>
-   usage
+   Início <self>
+   topologia
+   configuracoes
+   deploy
    test
