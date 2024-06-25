@@ -23,4 +23,8 @@ Nesta seção, abordaremos os passos necessários para realizar o deploy da apli
 
    - Copie os arquivos da aplicação para a pasta configurada no Nginx (`/var/www/html/`) para que sejam servidos pelo servidor web.
 
+6. **Criação do Pipeline de CI/CD (opcional)**:
+
+   - Configure um pipeline de CI/CD integrado com o GitHub para automatizar o processo de deploy da aplicação. Isso pode ser feito utilizando ferramentas como GitHub Actions.
+
 Este processo garantirá que a aplicação esteja pronta para ser acessada e utilizada conforme configurado no ambiente de produção.
